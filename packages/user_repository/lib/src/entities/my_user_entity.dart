@@ -10,7 +10,7 @@ class MyUserEntity extends Equatable {
 		required this.id,
 		required this.email,
 		required this.name,
-		this.picture,
+		this.picture, 
 	});
 
 	Map<String, Object?> toDocument() {

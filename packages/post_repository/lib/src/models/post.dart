@@ -1,30 +1,31 @@
+import 'package:equatable/equatable.dart';
 import 'package:user_repository/user_repository.dart';
 
 import '../entities/entities.dart';
 
-class Post {
-	String postId;
-	String post;
-	DateTime createAt;
-	MyUser myUser;
+class Post extends Equatable {
+  final String postId;
+  final String post;
+  final DateTime createAt;
+  final MyUser myUser;
 
-	Post({
-		required this.postId,
-		required this.post,
-		required this.createAt,
-		required this.myUser,
-	});
+  const Post({
+    required this.postId,
+    required this.post,
+    required this.createAt,
+    required this.myUser,
+  });
 
-	/// Empty user which represents an unauthenticated user.
+  /// Empty user which represents an unauthenticated user.
   static final empty = Post(
-		postId: '', 
-		post: '',
-		createAt: DateTime.now(), 
-		myUser: MyUser.empty
-	);
+    postId: '',
+    post: '',
+    createAt: DateTime.now(),
+    myUser: MyUser.empty,
+  );
 
-	/// Modify MyUser parameters
-	Post copyWith({
+  /// Modify MyUser parameters
+  Post copyWith({
     String? postId,
     String? post,
     DateTime? createAt,
@@ -38,13 +39,13 @@ class Post {
     );
   }
 
-	/// Convenience getter to determine whether the current user is empty.
+  /// Convenience getter to determine whether the current user is empty.
   bool get isEmpty => this == Post.empty;
 
   /// Convenience getter to determine whether the current user is not empty.
   bool get isNotEmpty => this != Post.empty;
 
-	PostEntity toEntity() {
+  PostEntity toEntity() {
     return PostEntity(
       postId: postId,
       post: post,
@@ -53,7 +54,7 @@ class Post {
     );
   }
 
-	static Post fromEntity(PostEntity entity) {
+  static Post fromEntity(PostEntity entity) {
     return Post(
       postId: entity.postId,
       post: entity.post,
@@ -62,7 +63,10 @@ class Post {
     );
   }
 
-	@override
+  @override
+  List<Object?> get props => [postId, post, createAt, myUser];
+
+  @override
   String toString() {
     return '''Post: {
       postId: $postId
@@ -71,5 +75,4 @@ class Post {
       myUser: $myUser
     }''';
   }
-	
 }

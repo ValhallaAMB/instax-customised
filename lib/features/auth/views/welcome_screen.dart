@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:instax/screens/authentication/sign_in_screen.dart';
-import 'package:instax/screens/authentication/sign_up_screen.dart';
+import 'package:instax/features/auth/views/sign_in_screen.dart';
+import 'package:instax/features/auth/views/sign_up_screen.dart';
 
-import '../../blocs/authentication_bloc/authentication_bloc.dart';
-import '../../blocs/sign_in_bloc/sign_in_bloc.dart';
-import '../../blocs/sign_up_bloc/sign_up_bloc.dart';
+import '../blocs/authentication_bloc/authentication_bloc.dart';
+import '../blocs/sign_in_bloc/sign_in_bloc.dart';
+import '../blocs/sign_up_bloc/sign_up_bloc.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -30,7 +30,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-			backgroundColor: Theme.of(context).colorScheme.background,
+			backgroundColor: Theme.of(context).colorScheme.surface,
 			appBar: AppBar(
 				elevation: 0,
 				backgroundColor: Colors.transparent,
@@ -52,8 +52,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
 								const SizedBox(height: kToolbarHeight),
 								TabBar(
 									controller: tabController,
-									unselectedLabelColor: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
-									labelColor: Theme.of(context).colorScheme.onBackground,
+									unselectedLabelColor: Theme.of(context).colorScheme.onSurface.withValues(),
+									labelColor: Theme.of(context).colorScheme.onSurface,
 									tabs: const [
 										Padding(
 											padding: EdgeInsets.all(12.0),

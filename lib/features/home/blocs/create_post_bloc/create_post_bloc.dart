@@ -1,12 +1,13 @@
-import 'package:bloc/bloc.dart';
+
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:post_repository/post_repository.dart';
 
 part 'create_post_event.dart';
 part 'create_post_state.dart';
 
 class CreatePostBloc extends Bloc<CreatePostEvent, CreatePostState> {
-	PostRepository _postRepository;
+	final PostRepository _postRepository;
 
   CreatePostBloc({
 		required PostRepository postRepository

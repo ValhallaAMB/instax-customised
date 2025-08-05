@@ -82,7 +82,7 @@ packages:
     source: hosted
     version: "3.0.3"
   equatable:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: equatable
       sha256: "567c64b3cb4cf82397aac55f4f0cbd3ca20d77c6c03bedbc4ceaddc08904aef7"
@@ -339,7 +339,7 @@ packages:
       path: "../user_repository"
       relative: true
     source: path
-    version: "0.1.0"
+    version: "1.0.0"
   uuid:
     dependency: "direct main"
     description:
@@ -373,5 +373,5 @@ packages:
     source: hosted
     version: "1.1.1"
 sdks:
-  dart: ">=3.8.0 <4.0.0"
+  dart: ">=3.8.1 <4.0.0"
   flutter: ">=3.22.0"

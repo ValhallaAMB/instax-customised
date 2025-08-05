@@ -7,9 +7,14 @@ import 'app.dart';
 import 'simple_bloc_observer.dart';
 
 void main() async {
-	WidgetsFlutterBinding.ensureInitialized();
-	await Firebase.initializeApp();
-	Bloc.observer = SimpleBlocObserver();
-	SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  // Ensure Flutter bindings are initialized
+  WidgetsFlutterBinding.ensureInitialized();
+  // Initialize Firebase
+  await Firebase.initializeApp();
+  // Ensure the app runs in portrait mode only
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  // Initialize Bloc observer
+  Bloc.observer = SimpleBlocObserver();
+  // Run the main app with the Firebase user repository
   runApp(MainApp(FirebaseUserRepository()));
 }

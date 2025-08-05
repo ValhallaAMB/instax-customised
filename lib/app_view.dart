@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:instax/blocs/get_post_bloc/get_post_bloc.dart';
-import 'package:instax/blocs/my_user_bloc/my_user_bloc.dart';
-import 'package:instax/blocs/sign_in_bloc/sign_in_bloc.dart';
-import 'package:instax/blocs/update_user_info_bloc/update_user_info_bloc.dart';
-import 'package:instax/screens/authentication/welcome_screen.dart';
+import 'package:instax/features/home/blocs/get_post_bloc/get_post_bloc.dart';
+import 'package:instax/features/home/blocs/my_user_bloc/my_user_bloc.dart';
+import 'package:instax/features/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:instax/features/home/blocs/update_user_info_bloc/update_user_info_bloc.dart';
+import 'package:instax/features/auth/views/welcome_screen.dart';
 import 'package:post_repository/post_repository.dart';
 
-import 'blocs/authentication_bloc/authentication_bloc.dart';
-import 'screens/home/home_screen.dart';
+import 'features/auth/blocs/authentication_bloc/authentication_bloc.dart';
+import 'features/home/views/home_screen.dart';
 
 class MyAppView extends StatelessWidget {
   const MyAppView({super.key});
@@ -18,10 +18,11 @@ class MyAppView extends StatelessWidget {
     return MaterialApp(
 			debugShowCheckedModeBanner: false,
 			title: 'InstaX',
+      // Define the app theme (colors)
 			theme: ThemeData(
         colorScheme: const ColorScheme.light(
-          background: Colors.white,
-          onBackground: Colors.black,
+          surface: Colors.white,
+          onSurface: Colors.black,
           primary: Color.fromRGBO(206, 147, 216, 1),
           onPrimary: Colors.black,
           secondary: Color.fromRGBO(244, 143, 177, 1),
