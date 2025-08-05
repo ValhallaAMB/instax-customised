@@ -6,20 +6,14 @@ import 'package:user_repository/user_repository.dart';
 import 'app_view.dart';
 
 class MainApp extends StatelessWidget {
-	final UserRepository userRepository;
+  final UserRepository userRepository;
   const MainApp(this.userRepository, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiRepositoryProvider(
-			providers: [
-				RepositoryProvider<AuthenticationBloc>(
-					create: (_) => AuthenticationBloc(
-						myUserRepository: userRepository
-					)
-				)
-			], 
-			child: const MyAppView()
-		);
+    return MultiRepositoryProvider(providers: [
+      RepositoryProvider<AuthenticationBloc>(
+          create: (_) => AuthenticationBloc(myUserRepository: userRepository))
+    ], child: const MyAppView());
   }
 }

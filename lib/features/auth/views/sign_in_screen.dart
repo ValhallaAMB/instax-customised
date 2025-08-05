@@ -26,20 +26,20 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return BlocListener<SignInBloc, SignInState>(
       listener: (context, state) {
-        if(state is SignInSuccess) {
-					setState(() {
-					  signInRequired = false;
-					});
-				} else if(state is SignInProcess) {
-					setState(() {
-					  signInRequired = true;
-					});
-				} else if(state is SignInFailure) {
-					setState(() {
-					  signInRequired = false;
-						_errorMsg = 'Invalid email or password';
-					});
-				}
+        if (state is SignInSuccess) {
+          setState(() {
+            signInRequired = false;
+          });
+        } else if (state is SignInProcess) {
+          setState(() {
+            signInRequired = true;
+          });
+        } else if (state is SignInFailure) {
+          setState(() {
+            signInRequired = false;
+            _errorMsg = 'Invalid email or password';
+          });
+        }
       },
       child: Form(
           key: _formKey,

@@ -7,7 +7,8 @@ import 'package:user_repository/user_repository.dart';
 
 class PostScreen extends StatefulWidget {
   final MyUser myUser;
-  const PostScreen(this.myUser, {super.key});
+  final VoidCallback? onPostCreated;
+  const PostScreen(this.myUser, {super.key, this.onPostCreated});
 
   @override
   State<PostScreen> createState() => _PostScreenState();
@@ -29,6 +30,8 @@ class _PostScreenState extends State<PostScreen> {
     return BlocListener<CreatePostBloc, CreatePostState>(
       listener: (context, state) {
         if (state is CreatePostSuccess) {
+          // Call the callback to refresh posts
+          widget.onPostCreated?.call();
           Navigator.pop(context);
         }
       },

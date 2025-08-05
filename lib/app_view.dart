@@ -16,57 +16,55 @@ class MyAppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-			debugShowCheckedModeBanner: false,
-			title: 'InstaX',
+      debugShowCheckedModeBanner: false,
+      title: 'InstaX',
       // Define the app theme (colors)
-			theme: ThemeData(
+      theme: ThemeData(
         colorScheme: const ColorScheme.light(
-          surface: Colors.white,
-          onSurface: Colors.black,
-          primary: Color.fromRGBO(206, 147, 216, 1),
-          onPrimary: Colors.black,
-          secondary: Color.fromRGBO(244, 143, 177, 1),
-          onSecondary: Colors.white,
-					tertiary: Color.fromRGBO(255, 204, 128, 1),
-          error: Colors.red,
-					outline: Color(0xFF424242)
-        ),
-			),
-			home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-				builder: (context, state) {
-					if(state.status == AuthenticationStatus.authenticated) {
-						return MultiBlocProvider(
-								providers: [
-									BlocProvider(
-										create: (context) => SignInBloc(
-											userRepository: context.read<AuthenticationBloc>().userRepository
-										),
-									),
-									BlocProvider(
-										create: (context) => UpdateUserInfoBloc(
-											userRepository: context.read<AuthenticationBloc>().userRepository
-										),
-									),
-									BlocProvider(
-										create: (context) => MyUserBloc(
-											myUserRepository: context.read<AuthenticationBloc>().userRepository
-										)..add(GetMyUser(
-											myUserId: context.read<AuthenticationBloc>().state.user!.uid
-										)),
-									),
-									BlocProvider(
-										create: (context) => GetPostBloc(
-											postRepository: FirebasePostRepository()
-										)..add(GetPosts())
-									)
-								],
-							child: const HomeScreen(),
-						);
-					} else {
-						return const WelcomeScreen();
-					}
-				}
-			),
-		);
+            surface: Colors.white,
+            onSurface: Colors.black,
+            primary: Color.fromRGBO(206, 147, 216, 1),
+            onPrimary: Colors.black,
+            secondary: Color.fromRGBO(244, 143, 177, 1),
+            onSecondary: Colors.white,
+            tertiary: Color.fromRGBO(255, 204, 128, 1),
+            error: Colors.red,
+            outline: Color(0xFF424242)),
+      ),
+      home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+          builder: (context, state) {
+        if (state.status == AuthenticationStatus.authenticated) {
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => SignInBloc(
+                    userRepository:
+                        context.read<AuthenticationBloc>().userRepository),
+              ),
+              BlocProvider(
+                create: (context) => UpdateUserInfoBloc(
+                    userRepository:
+                        context.read<AuthenticationBloc>().userRepository),
+              ),
+              BlocProvider(
+                create: (context) => MyUserBloc(
+                    myUserRepository:
+                        context.read<AuthenticationBloc>().userRepository)
+                  ..add(GetMyUser(
+                      myUserId:
+                          context.read<AuthenticationBloc>().state.user!.uid)),
+              ),
+              BlocProvider(
+                  create: (context) =>
+                      GetPostBloc(postRepository: FirebasePostRepository())
+                        ..add(GetPosts()))
+            ],
+            child: const HomeScreen(),
+          );
+        } else {
+          return const WelcomeScreen();
+        }
+      }),
+    );
   }
 }
